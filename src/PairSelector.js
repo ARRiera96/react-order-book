@@ -5,7 +5,7 @@ const PairSelector = ({assetPairs}) =>  {
         <select>
             {Object.keys(assetPairs).map((assetGroup, i, arr) => {
                 return (
-                    <optgroup label={assetGroup}>
+                    <optgroup key={assetGroup} label={assetGroup}>
                         {
                             assetPairs[assetGroup].map((assetPair) => {
                                 return (
