@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import KrakenClient from 'kraken-api';
 import BookSide from "./BookSide";
-const key          = ''; // API Key
-const secret       = ''; // API Private Key
-const kraken       = new KrakenClient(key, secret);
+import {Container, Row, Col} from 'react-bootstrap';
+const kraken       = new KrakenClient('', '');
 
 const OrderBook = () => {
     const [asks, setAsks] = useState([]);
@@ -30,9 +29,17 @@ const OrderBook = () => {
 
     return (
         <div className="bg-dark">
-            <h2 className="text-light">Table Placeholder</h2>
-            <BookSide requests={bids} reverseColumns={ true}/>
-            <BookSide requests={asks}/>
+            <h2 className="text-light">Order Book (ETH/USD)</h2>
+            <Container>
+                <Row>
+                    <Col>
+                        <BookSide requests={bids} reverseColumns={ true}/>
+                    </Col>
+                    <Col>
+                        <BookSide requests={asks}/>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };
