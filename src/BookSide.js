@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Table from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 const BookSide = ({requests, reverseColumns}) => {
     let tableHeaders = ['Amount', 'Total', 'Price'];
@@ -7,7 +7,7 @@ const BookSide = ({requests, reverseColumns}) => {
         tableHeaders.reverse();
     }
     return (
-        <Table striped bordered variant="dark">
+        <Table striped bordered variant="dark" size="sm">
             <thead>
             <tr>
                 {
