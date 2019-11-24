@@ -40,16 +40,19 @@ const OrderBook = () => {
     }
 
     useEffect(() => {
-        requestOrderBook();
         requestAssetPairs();
     }, []);
+
+    useEffect(() => {
+        requestOrderBook();
+    }, [assetPair]);
 
     return (
         <div className="bg-dark">
             <Container>
                 <Row >
                     <h3 className="text-light">Order Book (ETH/USD)</h3>
-                    <PairSelector assetPairs={assetPairs}/>
+                    <PairSelector assetPairs={assetPairs} defaultAssetPair={assetPair} setAssetPair={setAssetPair}/>
                 </Row>
                 <Row>
                     <Col>
