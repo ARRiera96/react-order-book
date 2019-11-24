@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Button';
 
-const BookSide = ({asks}) => {
-    console.log(asks);
+const BookSide = ({requests, reverseColumns}) => {
+    let tableHeaders = ['Amount', 'Total', 'Price'];
+    if(reverseColumns){
+        tableHeaders.reverse();
+    }
     return (
         <Table striped bordered variant="dark">
             <thead>
             <tr>
-                <th>Amount</th>
-                <th>Total</th>
-                <th>Price</th>
+                {
+                    tableHeaders.map(header => (<th>{header}</th>))
+                }
             </tr>
             </thead>
             <tbody>
-            {asks.map((ask, i, arr) => {
-                let total = i > 0 ? +(arr[i-1][1]) + +(ask[1]) : +ask[1];
+            {requests.map((ask, i, arr) => {
+                let currentVolume = +ask[1];
+                let total = i > 0 ? (+arr[i-1][1]) + currentVolume : currentVolume;
+                let tableData = [currentVolume, total.toFixed(1), ask[0]];
+                if(reverseColumns){
+                    tableData.reverse();
+                }
 
                return (<tr>
-                    <td>{ask[1]}</td>
-                    <td>{total.toFixed(1)}</td>
-                    <td>{ask[0]}</td>
+                   {
+                       tableData.map((data)=> (
+                         <td>{data}</td>
+                       ))
+                   }
                 </tr>)
             }) }
             </tbody>
