@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import KrakenClient from 'kraken-api';
 import OrderBookTable from "./OrderBookTable";
+import PairSelector from "./PairSelector";
 import {Container, Row, Col} from 'react-bootstrap';
 const kraken       = new KrakenClient('', '');
 
@@ -9,6 +10,7 @@ const OrderBook = () => {
     const [asks, setAsks] = useState([]);
     const [bids, setBids] = useState([]);
     const [assetPair, setAssetPair] = useState('XETHZUSD');
+    const [assetPairs, setAssetPairs] = useState([]);
 
     async function requestOrderBook() {
         const { result } = await kraken.api('Depth', { pair : assetPair , count: 25});
@@ -30,12 +32,11 @@ const OrderBook = () => {
         };
         Object.keys(result).forEach((assetPair) => {
             let base = result[assetPair].base;
-            console.log(base);
             if(Object.keys(assetPairs).includes(base)){
                 assetPairs[base].push(assetPair);
             }
         });
-        console.log(assetPairs);
+        setAssetPairs(assetPairs);
     }
 
     useEffect(() => {
@@ -48,6 +49,7 @@ const OrderBook = () => {
             <Container>
                 <Row >
                     <h3 className="text-light">Order Book (ETH/USD)</h3>
+                    <PairSelector assetPairs={assetPairs}/>
                 </Row>
                 <Row>
                     <Col>

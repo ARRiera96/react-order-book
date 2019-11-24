@@ -1,14 +1,13 @@
 import React from 'react';
 
-const PairSelector = (assetGroups) =>  {
+const PairSelector = ({assetPairs}) =>  {
     return (
         <select>
-            <option>All</option>
-            {Object.keys(assetGroups).map((assetGroup, i, arr) => {
+            {Object.keys(assetPairs).map((assetGroup, i, arr) => {
                 return (
                     <optgroup label={assetGroup}>
                         {
-                            arr[assetGroup].map((assetPair) => {
+                            assetPairs[assetGroup].map((assetPair) => {
                                 return (
                                     <option key={assetPair} value={assetPair}>{assetPair}</option>
                                 )
@@ -19,6 +18,6 @@ const PairSelector = (assetGroups) =>  {
             })}
         </select>
     )
-}
+};
 
-export default PairSelector; 
+export default PairSelector;
