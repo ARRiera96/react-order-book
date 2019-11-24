@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
 import KrakenClient from 'kraken-api';
-import BookSide from "./BookSide";
+import OrderBookTable from "./OrderBookTable";
 import {Container, Row, Col} from 'react-bootstrap';
 const kraken       = new KrakenClient('', '');
 
@@ -33,10 +33,10 @@ const OrderBook = () => {
             <Container>
                 <Row>
                     <Col>
-                        <BookSide requests={bids} reverseColumns={ true}/>
+                        <OrderBookTable requests={bids} reverseColumns={ true}/>
                     </Col>
                     <Col>
-                        <BookSide requests={asks}/>
+                        <OrderBookTable requests={asks}/>
                     </Col>
                 </Row>
             </Container>

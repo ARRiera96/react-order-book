@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 
-const BookSide = ({requests, reverseColumns}) => {
+const OrderBookTable = ({requests, reverseColumns}) => {
     let tableHeaders = ['Amount', 'Total', 'Price'];
     if(reverseColumns){
         tableHeaders.reverse();
@@ -37,4 +37,4 @@ const BookSide = ({requests, reverseColumns}) => {
     );
 };
 
-export default BookSide;
+export default OrderBookTable;
