@@ -61,11 +61,11 @@ const OrderBook = () => {
                 <Row>
                     <Col>
                         <h4 className="text-light">Bids</h4>
-                        <OrderBookTable requests={bids} reverseColumns={ true}/>
+                        <OrderBookTable requests={bids}/>
                     </Col>
                     <Col>
                         <h4 className="text-light">Asks</h4>
-                        <OrderBookTable requests={asks}/>
+                        <OrderBookTable requests={asks} reverseColumns={ true}/>
                     </Col>
                 </Row>
             </Container>
