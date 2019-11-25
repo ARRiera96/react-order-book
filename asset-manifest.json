@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-order-book/static/css/main.b100e6da.chunk.css",
+    "main.js": "/react-order-book/static/js/main.8106b9e7.chunk.js",
+    "main.js.map": "/react-order-book/static/js/main.8106b9e7.chunk.js.map",
+    "runtime-main.js": "/react-order-book/static/js/runtime-main.864f02a6.js",
+    "runtime-main.js.map": "/react-order-book/static/js/runtime-main.864f02a6.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/react-order-book/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.168a0991.chunk.js": "/react-order-book/static/js/2.168a0991.chunk.js",
+    "static/js/2.168a0991.chunk.js.map": "/react-order-book/static/js/2.168a0991.chunk.js.map",
+    "index.html": "/react-order-book/index.html",
+    "precache-manifest.d43900c0bcdc6a272a7e8287b18b4485.js": "/react-order-book/precache-manifest.d43900c0bcdc6a272a7e8287b18b4485.js",
+    "service-worker.js": "/react-order-book/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/react-order-book/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/css/main.b100e6da.chunk.css.map": "/react-order-book/static/css/main.b100e6da.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.864f02a6.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.168a0991.chunk.js",
+    "static/css/main.b100e6da.chunk.css",
+    "static/js/main.8106b9e7.chunk.js"
+  ]
+}
