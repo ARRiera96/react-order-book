@@ -31,9 +31,11 @@ const OrderBook = () => {
             'XETH': []
         };
         Object.keys(result).forEach((assetPair) => {
-            let {base, wsname} = result[assetPair];
-            if(Object.keys(assetPairs).includes(base) && !assetPair.endsWith('.d')){
-                assetPairs[base].push({assetPair, wsname});
+            let {base, quote, wsname} = result[assetPair];
+            let keys = Object.keys(assetPairs);
+            let pairKey = keys.includes(base) ? base : (keys.includes(quote) ? quote: '');
+            if(pairKey && !assetPair.endsWith('.d')){
+                assetPairs[pairKey].push({assetPair, wsname});
             }
         });
         setAssetPairs(assetPairs);
@@ -58,9 +60,11 @@ const OrderBook = () => {
                 </Row>
                 <Row>
                     <Col>
+                        <h4 className="text-light">Bids</h4>
                         <OrderBookTable requests={bids} reverseColumns={ true}/>
                     </Col>
                     <Col>
+                        <h4 className="text-light">Asks</h4>
                         <OrderBookTable requests={asks}/>
                     </Col>
                 </Row>
