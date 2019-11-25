@@ -13,7 +13,7 @@ const OrderBook = () => {
     const [assetPairs, setAssetPairs] = useState([]);
 
     async function requestOrderBook() {
-        const { result } = await kraken.api('Depth', { pair : assetPair , count: 16});
+        const { result } = await kraken.api('Depth', { pair : assetPair , count: 20});
         const { asks, bids } = result[assetPair];
         const sortFunction = (a,b) => {
             return b[0] - a[0];
@@ -51,10 +51,10 @@ const OrderBook = () => {
         <div className="bg-dark pt-4">
             <Container>
                 <Row className="pb-2 ml-1">
-                    <h3 className="text-light">Order Book (ETH/USD)</h3>
+                    <h3 className="text-light">Order Book</h3>
                 </Row>
                 <Row className="pb-3 ml-1">
-                    <PairSelector pairsByGroupAbrv={assetPairs} defaultAssetPair={assetPair} setAssetPair={setAssetPair}/>
+                    <PairSelector pairsByGroupAbrv={assetPairs} defaultAssetPair={assetPair} setAssetPair={setAssetPair} />
                 </Row>
                 <Row>
                     <Col>
