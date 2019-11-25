@@ -13,7 +13,7 @@ const OrderBook = () => {
     const [assetPairs, setAssetPairs] = useState([]);
 
     async function requestOrderBook() {
-        const { result } = await kraken.api('Depth', { pair : assetPair , count: 25});
+        const { result } = await kraken.api('Depth', { pair : assetPair , count: 16});
         const { asks, bids } = result[assetPair];
         const sortFunction = (a,b) => {
             return b[0] - a[0];
@@ -31,9 +31,9 @@ const OrderBook = () => {
             'XETH': []
         };
         Object.keys(result).forEach((assetPair) => {
-            let base = result[assetPair].base;
-            if(Object.keys(assetPairs).includes(base)){
-                assetPairs[base].push(assetPair);
+            let {base, wsname} = result[assetPair];
+            if(Object.keys(assetPairs).includes(base) && !assetPair.endsWith('.d')){
+                assetPairs[base].push({assetPair, wsname});
             }
         });
         setAssetPairs(assetPairs);
@@ -48,11 +48,13 @@ const OrderBook = () => {
     }, [assetPair]);
 
     return (
-        <div className="bg-dark">
+        <div className="bg-dark pt-4">
             <Container>
-                <Row >
+                <Row className="pb-2 ml-1">
                     <h3 className="text-light">Order Book (ETH/USD)</h3>
-                    <PairSelector assetPairs={assetPairs} defaultAssetPair={assetPair} setAssetPair={setAssetPair}/>
+                </Row>
+                <Row className="pb-3 ml-1">
+                    <PairSelector pairsByGroupAbrv={assetPairs} defaultAssetPair={assetPair} setAssetPair={setAssetPair}/>
                 </Row>
                 <Row>
                     <Col>

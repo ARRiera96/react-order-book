@@ -1,18 +1,17 @@
 import React from 'react';
 
-const PairSelector = ({assetPairs, defaultAssetPair, setAssetPair}) =>  {
+const PairSelector = ({pairsByGroupAbrv, defaultAssetPair, setAssetPair}) =>  {
     return (
         <select
         value={defaultAssetPair}
-        onChange={e => setAssetPair(e.target.value)}
-        >
-            {Object.keys(assetPairs).map((assetGroup, i, arr) => {
+        onChange={e => setAssetPair(e.target.value)}>
+            {Object.keys(pairsByGroupAbrv).map((assetGroup) => {
                 return (
                     <optgroup key={assetGroup} label={assetGroup}>
                         {
-                            assetPairs[assetGroup].map((assetPair) => {
+                            pairsByGroupAbrv[assetGroup].map((assetPair) => {
                                 return (
-                                    <option key={assetPair} value={assetPair}>{assetPair}</option>
+                                    <option key={assetPair.assetPair} value={assetPair.assetPair}>{assetPair.wsname}</option>
                                 )
                             })
                         }
